@@ -70,7 +70,7 @@ class SWUGenerator:
                 new.encrypt(new_path, self.aeskey, iv)
                 new.fullfilename = new_path
                 # recompute sha256, now for the encrypted file
-                new.computesha256()
+                new.getsha256()
                 entry['ivt'] = iv
             if 'compressed' in entry and not self.nocompress:
                 cmp = entry['compressed']
@@ -204,7 +204,7 @@ class SWUGenerator:
 
     def swupdate_get_sha256(self, filename):
         a = Artifact(filename)
-        return a.computesha256()
+        return a.getsha256()
 
     def swupdate_get_size(self, filename):
         a = Artifact(filename)
